@@ -1,6 +1,7 @@
 import type { ProjectDefinitionInterface } from '@defiyield/sandbox';
 import { veSIS } from './modules/veSIS';
 import { getPool } from './modules/pools';
+import { lpFarm } from './modules/lpFarm';
 
 const project: ProjectDefinitionInterface = {
   name: 'Symbiosis Finance',
@@ -14,13 +15,17 @@ const project: ProjectDefinitionInterface = {
     github: 'https://github.com/symbiosis-finance',
   },
   modules: [
-    veSIS,
+    veSIS('ethereum'),
+    veSIS('binance'),
     getPool('ethereum'),
     getPool('binance'),
     getPool('avalanche'),
     getPool('polygon'),
     getPool('boba'),
     getPool('kava-evm'),
+    lpFarm('ethereum'),
+    lpFarm('arbitrum'),
+    lpFarm('binance'),
   ],
 };
 
